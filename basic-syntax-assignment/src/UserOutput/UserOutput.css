@@ -1,4 +1,7 @@
-.first {
+.UserOutput {
+    width: 60%;
+    margin: 16px auto;
+    border: 1px solid #000;
     font-weight: bold;
-    background-color: white; 
+    background-color: #eee; 
 }

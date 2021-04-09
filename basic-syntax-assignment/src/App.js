@@ -5,8 +5,16 @@ import UserOutput from './UserOutput/UserOutput'
 
 class App extends Component {
   state = {
-    username:'xuehuachen'
+    username:'xuehua'
   }
+
+  // nameChangedHandler = (e) => {
+  //   const {value} = e.target
+  //   this.setState({
+  //     // username: e.target.value
+  //     username: value
+  //   })
+  // }
 
   nameChangedHandler = (e) => {
     this.setState({
@@ -14,10 +22,11 @@ class App extends Component {
     })
   }
 
+
   render() {
     return (
       <div className="App">
-        <UserInput username={this.state.username} changed={this.nameChangeHandler}/>
+        <UserInput username={this.state.username} changed={this.nameChangedHandler}/>
         <UserOutput username={this.state.username} />
         <UserOutput username={this.state.username} />
       </div>

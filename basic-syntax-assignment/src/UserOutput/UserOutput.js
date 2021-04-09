@@ -1,17 +1,17 @@
 import React from 'react'
 import './UserOutput.css'
-const UserOutput = (props) => {
+const userOutput = (props) => {
     const secondStyle = {
         fontWeight: 'bold',
         backgroundColor: 'red'
     }
     return (
-        <div> 
-            <p class="first">{props.username} </p>
+        <div className="UserOutput"> 
+            <p >{props.username} </p>
             <p style={secondStyle}>paragraph 2 </p>
         </div> 
         
     )
 }
 
-export default UserOutput
+export default userOutput
