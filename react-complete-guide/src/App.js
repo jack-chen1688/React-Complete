@@ -43,7 +43,7 @@ class App extends Component {
   //   this.setState({persons:persons})
   // }
 
-  togglePeronsHanelder = () => {
+  togglePeronsHandler = () => {
     this.setState({
       showPersons: !this.state.showPersons
     })
@@ -58,7 +58,7 @@ class App extends Component {
 
   render() {
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
@@ -85,13 +85,15 @@ class App extends Component {
             )})
           }
         </div>
-      )
+      );
+
+      style.backgroundColor = 'red';
     }
     return (
       <div className="App">
         <h1>Hi, I'm a React App!</h1>
         <p>This is really working</p>
-        <button style={style} onClick={this.togglePeronsHanelder}> Switch Name </button>
+        <button style={style} onClick={this.togglePeronsHandler}> Toggle Persons </button>
         {persons}
       </div>
     );
