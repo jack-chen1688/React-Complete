@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 //import React, { useState } from 'react';
 import './App.css';
-import Person from './Person/Person';
+import Persons from '../components/Persons/Persons';
 
 class App extends Component {
   state = {
@@ -35,15 +35,6 @@ class App extends Component {
     this.setState({persons:persons})
   }
 
-  // nameChangedHandler1 = (index, event) => {
-  //   console.log(event.target.value, index)
-  //   const persons = [...this.state.persons]
-  //   const person = {...persons[index]}
-  //   person.name = event.target.value
-  //   persons[index] = person
-  //   this.setState({persons:persons})
-  // }
-
   togglePeronsHandler = () => {
     this.setState({
       showPersons: !this.state.showPersons
@@ -75,22 +66,11 @@ class App extends Component {
 
     if (this.state.showPersons) {
       persons = (
-        <div>
-          { this.state.persons.map((person, index) => {
-            return (
-              <Person 
-                name={person.name}
-                age={person.age} 
-                click={this.deletePersonHandler.bind(this, index)}
-                key={person.id}
-                changed={(event) => this.nameChangedHandler(person.id, event)}
-                // changed={(event) => this.nameChangedHandler1(index, event)}
-
-                // changed={this.nameChangedHandler.bind(this, person.id)}
-                />
-            )})
-          }
-        </div>
+        <Persons 
+          persons={this.state.persons}
+          click={this.deletePersonHandler}
+          changed={this.nameChangedHandler}
+        />
       );
 
       style.backgroundColor = 'red';
