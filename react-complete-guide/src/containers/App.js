@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 //import React, { useState } from 'react';
 import './App.css';
 import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
   state = {
@@ -49,53 +50,22 @@ class App extends Component {
   }
 
   render() {
-    const style = {
-      backgroundColor: 'green',
-      color:'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer', 
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black',
-      }
-    };
-
-    let persons = null
-
-    if (this.state.showPersons) {
-      persons = (
-        <Persons 
-          persons={this.state.persons}
-          click={this.deletePersonHandler}
-          changed={this.nameChangedHandler}
-        />
-      );
-
-      style.backgroundColor = 'red';
-    }
-
-    const classes = [];
-    if (this.state.persons.length <= 2) {
-      classes.push('red')
-    }
-
-    if (this.state.persons.length <= 1) {
-      classes.push('bold')
-    }
-
     return (
         <div className="App">
-          <h1>Hi, I'm a React App!</h1>
-          <p className={classes.join(' ')}>This is really working</p>
-          <button style={style} onClick={this.togglePeronsHandler}> Toggle Persons </button>
-          {persons}
+          <Cockpit 
+            show={this.state.showPersons}
+            persons={this.state.persons} 
+            click={this.togglePeronsHandler}
+          />
+          <Persons 
+            show={this.state.showPersons}
+            persons={this.state.persons}
+            click={this.deletePersonHandler}
+            changed={this.nameChangedHandler}
+          />
         </div>
     );
   }
 }
 
 export default App;
-
-// export default app
