@@ -6,6 +6,12 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    console.log('[App.js] constructor');
+  }
+
   state = {
     persons: [
       {id:'asdf',name: 'Tom', age: 27},
@@ -16,6 +22,23 @@ class App extends Component {
     showPersons: false,
   }
 
+  static getDerivedStateFromProps(props, state) {
+    console.log('[App.js] getDerivedStateFromProps', props);
+    return state;
+  }
+
+  componentDidMount() {
+    console.log('[App.js] componentDidMount');
+  }
+
+  shouldComponentUpdate(prevProps, prevState) {
+    console.log('[App.js] shouldComponentUpdate')
+    return true;
+  }
+
+  componentDidUpdate() {
+    console.log('[App.js] componentDidUpdate');
+  }
   switchNameHandler = (newName) => {
     this.setState({
       persons: [
@@ -50,9 +73,11 @@ class App extends Component {
   }
 
   render() {
+    console.log('[App.js] render');
     return (
         <div className="App">
-          <Cockpit 
+          <Cockpit
+            title={this.props.appTitle}
             show={this.state.showPersons}
             persons={this.state.persons} 
             click={this.togglePeronsHandler}

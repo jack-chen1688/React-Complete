@@ -1,8 +1,15 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 
 const cockpit = (props) => {
-    
+    useEffect(() => {
+        console.log('[Cockpit.js] useEffect');  
+
+        setTimeout(()=>{
+            alert('Saved data to cloud!')
+        }, 1000)
+    }, [])
+
     const style = {
         backgroundColor: 'green',
         color:'white',
@@ -27,7 +34,7 @@ const cockpit = (props) => {
 
     return (
         <div>
-            <h1>Hi, I'm a React App!</h1>
+            <h1>{props.title}</h1>
             <p className={classes.join(' ')}>This is really working</p>
             <button style={style} onClick={props.click}> Toggle Persons </button>
         </div>
