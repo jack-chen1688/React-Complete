@@ -9,7 +9,11 @@ class Persons extends(Component) {
 
     shouldComponentUpdate(nextProps, nextState) {
         console.log('[Persons.js] shouldComponentUpdate')
-        return true;
+        if (nextProps.persons !== this.props.persons) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     getSnapshotBeforeUpdate(prevProps, prevState) {
@@ -22,8 +26,11 @@ class Persons extends(Component) {
         console.log(snapshot)
     }
 
+    componentWillUnmount() {
+        console.log('[Persons.js] componenentWillUnmount')
+    }
     render() {
-        return (this.props.show ? this.props.persons.map((person, index) => {
+        return (this.props.persons.map((person, index) => {
             console.log('[Persons.js] rendering...');
             return (
             <Person 
@@ -32,7 +39,7 @@ class Persons extends(Component) {
                 click={(index) => this.props.click(index)}
                 key={person.id}
                 changed={(event) => this.props.changed(person.id, event)}/>
-            )}) : null);    
+            )}));    
     }
 }
     

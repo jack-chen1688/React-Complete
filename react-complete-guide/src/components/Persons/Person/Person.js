@@ -3,9 +3,9 @@ import './Person.css';
 
 class Person extends(Component) {
     componentWillUnmount() {
-        console.log('[Persons.js componentWillUnmount');
+        console.log('[Person.js] componentWillUnmount');
     }
-    
+
     render() {
         console.log('[Person.js] rendering')
         return (

@@ -20,6 +20,7 @@ class App extends Component {
     ],
     otherState: 'Some other value',
     showPersons: false,
+    showCockpit: true,
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -65,6 +66,13 @@ class App extends Component {
     })
   }
 
+  hideCockpit = () => {
+    console.log('hideCockpit called')
+    this.setState({
+      showCockpit: false
+    })
+  }
+
   deletePersonHandler = (personIndex) => {
     console.log("delete is called for", personIndex)
     const persons = [...this.state.persons];
@@ -72,22 +80,36 @@ class App extends Component {
     this.setState({persons: persons})
   }
 
+
   render() {
     console.log('[App.js] render');
+
+    let persons = null;
+
+    if (this.state.showPersons) {
+        persons = (
+          <Persons 
+            persons={this.state.persons}
+            click={this.deletePersonHandler}
+            changed={this.nameChangedHandler}
+         />)
+    }
+  
     return (
         <div className="App">
-          <Cockpit
+          <button onClick={() => {
+            this.setState({showCockpit:!this.state.showCockpit});
+            }}
+          >
+            Hide Cockpit
+          </button>
+          {this.state.showCockpit ? <Cockpit
             title={this.props.appTitle}
             show={this.state.showPersons}
             persons={this.state.persons} 
             click={this.togglePeronsHandler}
-          />
-          <Persons 
-            show={this.state.showPersons}
-            persons={this.state.persons}
-            click={this.deletePersonHandler}
-            changed={this.nameChangedHandler}
-          />
+          />: null}
+          {persons}
         </div>
     );
   }
