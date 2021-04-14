@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './Person.css';
+import PropTyes from 'prop-types';
 import Aux from '../../../hoc/Auxilary'
 
 class Person extends(Component) {
@@ -25,5 +26,12 @@ class Person extends(Component) {
     }
     
 };
+
+Person.propTypes = {
+    click: PropTyes.func,
+    name: PropTyes.string,
+    age: PropTyes.number,
+    changed: PropTyes.func,
+}
 
 export default Person;
