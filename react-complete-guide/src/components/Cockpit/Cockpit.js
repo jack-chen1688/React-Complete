@@ -33,11 +33,11 @@ const cockpit = (props) => {
     }
 
     const classes = [];
-    if (props.persons.length <= 2) {
+    if (props.personsLength <= 2) {
       classes.push('red')
     }
 
-    if (props.persons.length <= 1) {
+    if (props.personsLength <= 1) {
       classes.push('bold')
     }
 

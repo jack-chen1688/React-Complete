@@ -61,8 +61,9 @@ class App extends Component {
   }
 
   togglePeronsHandler = () => {
+    const doesShow = this.state.showPersons
     this.setState({
-      showPersons: !this.state.showPersons
+      showPersons: !doesShow
     })
   }
 
@@ -98,7 +99,9 @@ class App extends Component {
     return (
         <div className="App">
           <button onClick={() => {
-            this.setState({showCockpit:!this.state.showCockpit});
+            this.setState((prevState, props) => {
+                return {showCockpit:!prevState.showCockpit}
+              });
             }}
           >
             Hide Cockpit
@@ -106,7 +109,7 @@ class App extends Component {
           {this.state.showCockpit ? <Cockpit
             title={this.props.appTitle}
             show={this.state.showPersons}
-            persons={this.state.persons} 
+            personsLength={this.state.persons.length} 
             click={this.togglePeronsHandler}
           />: null}
           {persons}
